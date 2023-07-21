@@ -3,7 +3,7 @@ import dotEnv from "dotenv";
 import express from "express";
 import path from "path";
 import {fileURLToPath} from 'url';
-import router from "./server/routes.js";
+import test from "./server/routes/test.js";
 
 const app = new express();
 const port = 9090 || dotEnv.PORT;
@@ -15,7 +15,7 @@ app
   .use(express.urlencoded({ extended: true }))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: false }))
-  .use(express.static(path.resolve(__dirname + '/../react-client/dist')))
-  .use('/api', router)
+  // .use(express.static(path.resolve(__dirname + '/../react-client/dist')))
+  .use('/api', test)
 
 app.listen(port, () => console.log('listening on port ', port));
